@@ -1,24 +1,15 @@
 function brightest(colors){
-    let answer = 0
-    const lettersWeight = {
-        A: 10,
-        B: 11,
-        C: 12,
-        D: 13,
-        E: 14,
-        F: 15,
-    }
-    for (let index = 0; index < colors.length; index++) {
-        let weight = 6
-        const element = colors[index];
-        if (lettersWeight.hasOwnProperty(element)) {
-            answer += lettersWeight[element] * weight
-        } else {
-            answer += element * weight
+    let answer = colors[0]
+    let maxColor = 0
+    for (let i = 0; i < colors.length; i++) {
+       let brightestColor = Math.max(parseInt(colors[i].substring(1,3),16),parseInt(colors[i].substring(3,5),16),parseInt(colors[i].substring(5,7),16))
+       debugger
+        if (brightestColor > maxColor) {
+            answer = colors[i]
+            maxColor = brightestColor
         }
-        weight--
     }
     return answer
 }
 
-console.log(brightest('12F2A2F2'));
+console.log(brightest(["#FF1000", "#000000",'#0000FF']));
